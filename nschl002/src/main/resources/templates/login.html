@@ -7,13 +7,15 @@ xmlns:th="http://www.thymeleaf.org" lang="de">
 </head>
 <body>
 
+    <h1>Login</h1>
+    <span th:text="${hint}"></span>
     <form th:method="POST" th:action="@{/login}">
-        <label for="username">Benutzername</label>
+        <label for="username">Benutzername</label><br>
         <input type="text" name="username" id="username">    
-
-        <label for="password">Passwort</label>
+        <br><br>
+        <label for="password">Passwort</label><br>
         <input type="password" name="password" id="password">
-
+        <br>
         <button type="submit">Anmelden</button>
     </form>
     
