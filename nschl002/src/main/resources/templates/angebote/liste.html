@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" lang="de">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angebotsliste</title>
+</head>
+<body>
+
+    <h1>Aktuelle Angebote</h1>
+
+    <div th:if="${#lists.size(angebote)} > 0">
+        <table>
+            <tr>
+                <th>Haltbar bis</th>
+                <th>Anbieter</th>
+                <th>Abholort</th>
+                <th>Beschreibung</th>
+            </tr>
+            <tr th:each="a: ${angebote}">
+                <td th:text="${s.haltbarbis}">Haltbar bis</td>
+                <td th:text="${s.name}">Anbieter</td>
+                <td th:text="${s.abholort}">Abholort</td>
+                <td th:text="${s.beschreibung}">Beschreibung</td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${#lists.size(angebote)} <= 0">
+        Keine aktuellen Angebote!
+    </div>
+    
+    
+</body>
+</html>
