@@ -18,7 +18,7 @@ public class BratenDaten {
     
     @Override
     public String toString(){
-        return String.format("Braten %s in %s (haltbar bis %s): %s", name, abholort, haltbarbis.toString(), beschreibung);
+        return String.format("Braten von %s in %s (haltbar bis %s): %s", name, abholort, haltbarbis.toString(), beschreibung);
     }
 
     public String getName() {
