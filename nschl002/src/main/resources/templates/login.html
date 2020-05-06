@@ -9,6 +9,8 @@ xmlns:th="http://www.thymeleaf.org" lang="de">
 
     <h1>Login</h1>
     <span th:text="${hint}"></span>
+    <br>
+    
     <form th:method="POST" th:action="@{/login}">
         <label for="username">Benutzername</label><br>
         <input type="text" name="username" id="username">    
