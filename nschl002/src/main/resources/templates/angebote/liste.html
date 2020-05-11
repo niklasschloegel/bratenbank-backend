@@ -18,10 +18,10 @@ xmlns:th="http://www.thymeleaf.org" lang="de">
                 <th>Beschreibung</th>
             </tr>
             <tr th:each="a: ${angebote}">
-                <td th:text="${s.haltbarbis}">Haltbar bis</td>
-                <td th:text="${s.name}">Anbieter</td>
-                <td th:text="${s.abholort}">Abholort</td>
-                <td th:text="${s.beschreibung}">Beschreibung</td>
+                <td th:text="${a.haltbarbis}">Haltbar bis</td>
+                <td th:text="${a.name}">Anbieter</td>
+                <td th:text="${a.abholort}">Abholort</td>
+                <td th:text="${a.beschreibung}">Beschreibung</td>
             </tr>
         </table>
     </div>
