@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -23,9 +24,23 @@ public class BratenAngebotController {
         m.addAttribute("angebote", bratenListe);
     }
 
-    @GetMapping("angebot")
+    @GetMapping("/angebot")
     public String showListe(Model m) {
         return "/angebote/liste";
     }
 
+    @PostMapping("/angebot")
+    public String getNewEntry(Model m, @ModelAttribute("angebotform") BratenDaten bratenDaten,
+                                @ModelAttribute("angebote") List<BratenDaten> bratenListe) {
+        
+        bratenListe.add(bratenDaten);
+        m.addAttribute("angebote", bratenListe);
+        return "/angebote/liste";
+    }
+
+    @GetMapping("/angebot/neu")
+    public String addNewEntry(Model m) {
+        m.addAttribute("angebotform", new BratenDaten());
+        return "/angebote/bearbeiten";
+    }
 }

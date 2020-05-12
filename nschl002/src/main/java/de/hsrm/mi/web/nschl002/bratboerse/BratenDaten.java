@@ -2,10 +2,13 @@ package de.hsrm.mi.web.nschl002.bratboerse;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class BratenDaten {
     
     private String name;
     private String abholort;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate haltbarbis;
     private String beschreibung;
 
@@ -18,7 +21,7 @@ public class BratenDaten {
         this.abholort = abholort;
         this.haltbarbis = haltbarbis;
         this.beschreibung = beschreibung;
-    }
+    } 
     
     @Override
     public String toString(){
