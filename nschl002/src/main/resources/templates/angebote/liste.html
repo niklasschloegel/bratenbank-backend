@@ -28,6 +28,9 @@ xmlns:th="http://www.thymeleaf.org" lang="de">
     <div th:if="${#lists.size(angebote)} <= 0">
         Keine aktuellen Angebote!
     </div>
+    <div>
+        <a th:href="@{/angebot/neu}">Neuen Braten anbieten</a>
+    </div>
     
     
 </body>
