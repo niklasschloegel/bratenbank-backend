@@ -9,6 +9,10 @@ public class BratenDaten {
     private LocalDate haltbarbis;
     private String beschreibung;
 
+    public BratenDaten(){
+        
+    }
+
     public BratenDaten(String name, String abholort, LocalDate haltbarbis, String beschreibung) {
         this.name = name;
         this.abholort = abholort;
