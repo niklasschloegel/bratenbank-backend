@@ -33,7 +33,6 @@ public class BratenAngebotController {
     @PostMapping("/angebot")
     public String getNewEntry(Model m, @ModelAttribute("angebotform") BratenDaten bratenDaten,
                                 @ModelAttribute("angebote") List<BratenDaten> bratenListe) {
-        
         bratenListe.add(bratenDaten);
         m.addAttribute("angebote", bratenListe);
         return "/angebote/liste";
