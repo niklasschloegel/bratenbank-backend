@@ -2,6 +2,8 @@ package de.hsrm.mi.web.nschl002.bratboerse;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Future;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class BratenDaten {
@@ -9,6 +11,7 @@ public class BratenDaten {
     private String name;
     private String abholort;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Future
     private LocalDate haltbarbis;
     private String beschreibung;
 
