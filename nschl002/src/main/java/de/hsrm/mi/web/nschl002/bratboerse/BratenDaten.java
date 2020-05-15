@@ -10,19 +10,21 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class BratenDaten {
     
+    @Size(min=3, max=80)
     @NotNull
-    @Size(min=3)
     private String name;
     
     @NotNull
+    @Size(min=1, max=80)
     private String abholort;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Future
+    @NotNull
     private LocalDate haltbarbis;
     
+    @Size(min=1, max=80)
     @NotNull
-    @Size(max=80)
     private String beschreibung;
 
     public BratenDaten(){
