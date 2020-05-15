@@ -3,16 +3,26 @@ package de.hsrm.mi.web.nschl002.bratboerse;
 import java.time.LocalDate;
 
 import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class BratenDaten {
     
+    @NotNull
+    @Size(min=3)
     private String name;
+    
+    @NotNull
     private String abholort;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Future
     private LocalDate haltbarbis;
+    
+    @NotNull
+    @Size(max=80)
     private String beschreibung;
 
     public BratenDaten(){
