@@ -19,7 +19,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String firstShow() {
-        return "login";
+        return "/login";
     }
 
 

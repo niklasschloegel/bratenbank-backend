@@ -4,8 +4,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +21,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("angebote")
 public class BratenAngebotController {
     
+    private Logger logger = LoggerFactory.getLogger(BratenAngebotController.class);
+
     @ModelAttribute("angebote")
     public void initList(Model m) {
         List<BratenDaten> bratenListe = new ArrayList<>();
@@ -31,8 +38,15 @@ public class BratenAngebotController {
     }
 
     @PostMapping("/angebot")
-    public String getNewEntry(Model m, @ModelAttribute("angebotform") BratenDaten bratenDaten,
-                                @ModelAttribute("angebote") List<BratenDaten> bratenListe) {
+    public String getNewEntry(Model m, @ModelAttribute("angebote") List<BratenDaten> bratenListe,
+                                @Valid @ModelAttribute("angebotform") BratenDaten bratenDaten,
+                                BindingResult result) {
+
+        if (result.hasErrors()) {
+            logger.warn("Fehler beim editieren eines Bratens");
+            return "/angebote/bearbeiten";
+        }
+
         bratenListe.add(bratenDaten);
         m.addAttribute("angebote", bratenListe);
         return "/angebote/liste";
