@@ -26,9 +26,9 @@ public class BratenAngebotController {
     @ModelAttribute("angebote")
     public void initList(Model m) {
         List<BratenDaten> bratenListe = new ArrayList<>();
-        bratenListe.add(new BratenDaten("Jönhard", "Vollradisroda", LocalDate.of(2020, 5, 6), "leckerer Grünkohlbraten"));
-        bratenListe.add(new BratenDaten("Friedfert", "Arensch", LocalDate.of(2020, 5, 31), "Palatschinkenbraten"));
-        bratenListe.add(new BratenDaten("Tupel", "Wiesbaden", LocalDate.of(2020, 6, 1), "Tupel's Spezialbraten"));
+        bratenListe.add(new BratenDaten("Jönhard", "Vollradisroda", LocalDate.of(2020, 5, 6), "leckerer Grünkohlbraten", 100));
+        bratenListe.add(new BratenDaten("Friedfert", "Arensch", LocalDate.of(2020, 5, 31), "Palatschinkenbraten", 25));
+        bratenListe.add(new BratenDaten("Tupel", "Wiesbaden", LocalDate.of(2020, 6, 1), "Tupel's Spezialbraten", 50));
         m.addAttribute("angebote", bratenListe);
     }
 

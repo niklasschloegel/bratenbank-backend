@@ -24,6 +24,7 @@ xmlns:th="http://www.thymeleaf.org" lang="de">
                 <td th:text="${a.name}">Anbieter</td>
                 <td th:text="${a.abholort}">Abholort</td>
                 <td th:text="${a.beschreibung}">Beschreibung</td>
+                <td th:text="${a.vgrad}">Vegetarizität</td>
                 <td><a th:href="@{'/angebot/'+ ${status.index}+'/del'}">[del]</a></td>
                 <td><a th:href="@{'/angebot/'+ ${status.index}}">[edit]</a></td>
             </tr>

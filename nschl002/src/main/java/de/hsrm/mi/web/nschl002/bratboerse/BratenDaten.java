@@ -28,15 +28,19 @@ public class BratenDaten {
     @NotNull
     private String beschreibung;
 
+    private int[] vegWerte = {0, 25, 50, 75, 100};
+    private int vgrad;
+
     public BratenDaten(){
         
     }
 
-    public BratenDaten(String name, String abholort, LocalDate haltbarbis, String beschreibung) {
+    public BratenDaten(String name, String abholort, LocalDate haltbarbis, String beschreibung, int vgrad) {
         this.name = name;
         this.abholort = abholort;
         this.haltbarbis = haltbarbis;
         this.beschreibung = beschreibung;
+        this.vgrad = vgrad;
     } 
     
     @Override
@@ -74,6 +78,24 @@ public class BratenDaten {
 
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
+    }
+
+    public int[] getVegWerte(){
+        return this.vegWerte;
+    }
+
+    public void setVegWerte(int[] vegWerte) {
+        for (int i=0; i<this.vegWerte.length; i++){
+            this.vegWerte[i] = vegWerte[i];
+        }
+    }
+
+    public int getVgrad(){
+        return this.vgrad;
+    }
+
+    public void setVgrad(int vgrad) {
+        this.vgrad = vgrad;
     }
 
 }
