@@ -1,6 +1,5 @@
 package de.hsrm.mi.web.nschl002.bratboerse;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
