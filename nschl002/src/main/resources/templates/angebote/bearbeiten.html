@@ -14,19 +14,19 @@
     <form th:method="POST" th:object="${angebotform}" th:action="@{/angebot}">
         <label for="name">Anbieter</label><br>
         <input type="text" name="name" id="name" th:field="*{name}" th:errorclass="error">
-        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Muss zwischen 3 und 80 liegen</span><br>
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br>
         <br>
         <label for="abholort">Abholort</label><br>
         <input type="text" name="abholort" id="abholort" th:field="*{abholort}" th:errorclass="error">
-        <span th:if="${#fields.hasErrors('abholort')}" th:errors="*{abholort}">Bitte einen Ort eingeben</span><br>
+        <span th:if="${#fields.hasErrors('abholort')}" th:errors="*{abholort}"></span><br>
         <br>
         <label for="beschreibung">Beschreibung</label><br>
         <input type="text" name="beschreibung" id="beschreibung" th:field="*{beschreibung}" th:errorclass="error">
-        <span th:if="${#fields.hasErrors('beschreibung')}" th:errors="*{beschreibung}">Bitte aussagekräftige Beschreibung eingeben</span><br>
+        <span th:if="${#fields.hasErrors('beschreibung')}" th:errors="*{beschreibung}"></span><br>
         <br>
         <label for="haltbarbis">Haltbar bis</label><br>
         <input type="date" name="haltbarbis" id="haltbarbis" th:field="*{haltbarbis}" th:errorclass="error">
-        <span th:if="${#fields.hasErrors('haltbarbis')}" th:errors="*{haltbarbis}">Der ist ja schon abgelaufen...</span><br>
+        <span th:if="${#fields.hasErrors('haltbarbis')}" th:errors="*{haltbarbis}"></span><br>
         <br><br>
         <button type="submit">Daten absenden</button>
     </form>

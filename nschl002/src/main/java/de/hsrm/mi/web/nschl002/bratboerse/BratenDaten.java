@@ -8,14 +8,15 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import de.hsrm.mi.web.nschl002.bratboerse.validator.GuteAdresse;
+
 public class BratenDaten {
     
     @Size(min=3, max=80)
     @NotNull
     private String name;
     
-    @NotNull
-    @Size(min=1, max=80)
+    @GuteAdresse
     private String abholort;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,11 +22,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class BratenAngebotController {
     
     private Logger logger = LoggerFactory.getLogger(BratenAngebotController.class);
-
-    private static final String WARN_ANBIETER = "Muss zwischen 3 und 80 liegen";
-    private static final String WARN_ABHOLORT = "Bitte einen Ort eingeben";
-    private static final String WARN_BESCHREIBUNG = "Bitte aussagekräftige Beschreibung eingeben";
-    private static final String WARN_HALTBARBIS = "Der ist ja schon abgelaufen...";
 
     @ModelAttribute("angebote")
     public void initList(Model m) {
