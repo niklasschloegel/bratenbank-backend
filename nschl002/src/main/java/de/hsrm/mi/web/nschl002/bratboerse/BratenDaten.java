@@ -30,18 +30,6 @@ public class BratenDaten {
 
     private int[] vegWerte = {0, 25, 50, 75, 100};
     private int vgrad;
-
-    public BratenDaten(){
-        
-    }
-
-    public BratenDaten(String name, String abholort, LocalDate haltbarbis, String beschreibung, int vgrad) {
-        this.name = name;
-        this.abholort = abholort;
-        this.haltbarbis = haltbarbis;
-        this.beschreibung = beschreibung;
-        this.vgrad = vgrad;
-    } 
     
     @Override
     public String toString(){
