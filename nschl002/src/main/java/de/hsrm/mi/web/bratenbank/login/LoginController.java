@@ -25,7 +25,9 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model m){
-        if (username.equals(AUTHORIZED_USER) && password.equals(PW)) {
+        if (username == null || username.isEmpty()) {
+            return "/login";
+        } else if (username.equals(AUTHORIZED_USER) && password.equals(PW)) {
             return "redirect:/angebot";    
         } else {
             logger.warn("Login failed for user " + username);
