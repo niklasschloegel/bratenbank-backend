@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 @NotNull
 @Size(min=1, max=80)
 public @interface GuteAdresse {
-    String message() default "Adresse muss dem Format '<Straße> <Hausnr.>, <PLZ> <Ort>' entsprechen.";
+    String message() default "{guteadresse}";
     Class<? extends Payload>[] payload() default{};
     Class<?>[] groups() default{};
 }
