@@ -1,4 +1,4 @@
-package de.hsrm.mi.web.bratenbank.test.ueb04;
+package de.hsrm.mi.web.bratenbank.ueb04;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

@@ -1,4 +1,4 @@
-package de.hsrm.mi.web.nschl002.bratboerse;
+package de.hsrm.mi.web.bratenbank.bratboerse;
 
 import java.util.ArrayList;
 import java.util.List;

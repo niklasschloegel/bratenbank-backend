@@ -1,4 +1,4 @@
-package de.hsrm.mi.web.nschl002.login;
+package de.hsrm.mi.web.bratenbank.login;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

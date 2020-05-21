@@ -1,4 +1,4 @@
-package de.hsrm.mi.web.nschl002;
+package de.hsrm.mi.web.bratenbank;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package de.hsrm.mi.web.nschl002.bratboerse;
+package de.hsrm.mi.web.bratenbank.bratboerse;
 
 import java.time.LocalDate;
 
@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import de.hsrm.mi.web.nschl002.bratboerse.validator.GuteAdresse;
+import de.hsrm.mi.web.bratenbank.bratboerse.validator.GuteAdresse;
 
 public class BratenDaten {
     

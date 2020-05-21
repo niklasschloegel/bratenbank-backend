@@ -1,4 +1,4 @@
-package de.hsrm.mi.web.nschl002.bratboerse.validator;
+package de.hsrm.mi.web.bratenbank.bratboerse.validator;
 
 import java.util.regex.Pattern;
 

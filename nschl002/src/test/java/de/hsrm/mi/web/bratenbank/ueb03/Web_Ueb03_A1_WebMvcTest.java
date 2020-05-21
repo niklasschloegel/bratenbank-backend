@@ -1,4 +1,4 @@
-package de.hsrm.mi.web.bratenbank.test.ueb03;
+package de.hsrm.mi.web.bratenbank.ueb03;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
