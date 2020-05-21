@@ -4,38 +4,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 
-<title>Neuen Braten erfassen</title>
+<title th:text="#{edit.title}">Edit roast</title>
 </head>
 
 <body>
 
-    <h1>Braten erfassen und bearbeiten</h1>
+    <h1 th:text="#{edit.title}">Edit roast</h1>
 
     <form th:method="POST" th:object="${angebotform}" th:action="@{/angebot}">
-        <label for="name">Anbieter</label><br>
+        <label for="name" th:text="#{list.provider}">Provider</label><br>
         <input type="text" name="name" id="name" th:field="*{name}" th:errorclass="error">
         <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span><br>
         <br>
-        <label for="abholort">Abholort</label><br>
+        <label for="abholort" th:text="#{list.location}">Location</label><br>
         <input type="text" name="abholort" id="abholort" th:field="*{abholort}" th:errorclass="error">
         <span th:if="${#fields.hasErrors('abholort')}" th:errors="*{abholort}"></span><br>
         <br>
-        <label for="beschreibung">Beschreibung</label><br>
+        <label for="beschreibung" th:text="#{list.description}">Description</label><br>
         <input type="text" name="beschreibung" id="beschreibung" th:field="*{beschreibung}" th:errorclass="error">
         <span th:if="${#fields.hasErrors('beschreibung')}" th:errors="*{beschreibung}"></span><br>
         <br>
-        <label for="haltbarbis">Haltbar bis</label><br>
+        <label for="haltbarbis" th:text="#{list.durability}">Best before</label><br>
         <input type="date" name="haltbarbis" id="haltbarbis" th:field="*{haltbarbis}" th:errorclass="error">
         <span th:if="${#fields.hasErrors('haltbarbis')}" th:errors="*{haltbarbis}"></span><br>
         <br>
-        <label for="vgrad">Vegetarizität</label>
+        <label for="vgrad" th:text="#{list.vegetarian}">Vegetarian scale</label>
         <select id="vgrad" th:field="*{vgrad}">
             <option th:each="v: *{vegWerte}"
                     th:value="${v}"
                     th:text="${v} + '%'"/>
         </select>
         <br><br>
-        <button type="submit">Daten absenden</button>
+        <button type="submit" th:text="#{edit.submit}">Submit data</button>
     </form>
     
 </body>

@@ -3,39 +3,39 @@
 xmlns:th="http://www.thymeleaf.org" lang="de">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angebotsliste</title>
+    <title th:text="#{list.title}">Offers list</title>
 </head>
 <body>
 
-    <h1>Aktuelle Angebote</h1>
+    <h1 th:text="#{list.offers}">Current offers</h1>
 
     <div th:if="${#lists.size(angebote)} > 0">
         <table>
             <tr>
-                <th>Haltbar bis</th>
-                <th>Anbieter</th>
-                <th>Abholort</th>
-                <th>Beschreibung</th>
-                <th>Vegetarizität</th>
-                <th>löschen</th>
-                <th>bearbeiten</th>
+                <th th:text="#{list.durability}">Best before</th>
+                <th th:text="#{list.provider}">Provider</th>
+                <th th:text="#{list.location}">Location</th>
+                <th th:text="#{list.description}">Description</th>
+                <th th:text="#{list.vegetarian}">Vegetarian scale</th>
+                <th th:text="#{list.delete}">delete</th>
+                <th th:text="#{list.edit}">edit</th>
             </tr>
             <tr th:each="a, status: ${angebote}">
-                <td th:text="${a.haltbarbis}">Haltbar bis</td>
-                <td th:text="${a.name}">Anbieter</td>
-                <td th:text="${a.abholort}">Abholort</td>
-                <td th:text="${a.beschreibung}">Beschreibung</td>
-                <td th:text="${a.vgrad}">Vegetarizität</td>
+                <td th:text="${a.haltbarbis}">Best before</td>
+                <td th:text="${a.name}">Provider</td>
+                <td th:text="${a.abholort}">Location</td>
+                <td th:text="${a.beschreibung}">Description</td>
+                <td th:text="${a.vgrad} + '%'">Vegetarian scale</td>
                 <td><a th:href="@{'/angebot/'+ ${status.index}+'/del'}">[del]</a></td>
                 <td><a th:href="@{'/angebot/'+ ${status.index}}">[edit]</a></td>
             </tr>
         </table>
     </div>
-    <div th:if="${#lists.size(angebote)} <= 0">
-        Keine aktuellen Angebote!
+    <div th:if="${#lists.size(angebote)} <= 0" th:text="#{list.empty}">
+        No current offers!
     </div>
     <div>
-        <a th:href="@{/angebot/neu}">Neuen Braten anbieten</a>
+        <a th:href="@{/angebot/neu}" th:text="#{list.new}">Add new roast</a>
     </div>
     
     

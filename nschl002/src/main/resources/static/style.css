@@ -1,3 +1,4 @@
 .error {
-    border: 1px solid red;
+    border-width: 1px;
+    border-color: red;
 }

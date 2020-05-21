@@ -3,22 +3,22 @@
 xmlns:th="http://www.thymeleaf.org" lang="de">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title th:text="#{login.title}">Login</title>
 </head>
 <body>
 
-    <h1>Login</h1>
+    <h1 th:text="#{login.title}">Login</h1>
     <span th:text="${hint}"></span>
     <br>
     
     <form th:method="POST" th:action="@{/login}">
-        <label for="username">Benutzername</label><br>
+        <label for="username" th:text="#{login.username}">Username</label><br>
         <input type="text" name="username" id="username">    
         <br><br>
-        <label for="password">Passwort</label><br>
+        <label for="password" th:text="#{login.password}">Password</label><br>
         <input type="password" name="password" id="password">
         <br>
-        <button type="submit">Anmelden</button>
+        <button type="submit" th:text="#{login.login}">Login</button>
     </form>
     
 </body>
