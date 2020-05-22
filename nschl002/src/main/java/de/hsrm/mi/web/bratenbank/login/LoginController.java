@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class LoginController {
 
-    private static final String AUTHORIZED_USER = "joghurta";
-    private static final String PW = "joghurta8";
-    private static final String HINT = "Hinweis: Das korrekte Passwort für joghurta ist joghurta8.";
-
     private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @GetMapping("/login")
@@ -25,14 +21,17 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(@RequestParam String username, @RequestParam String password, Model m){
+        String correctPW = username+username.length();
+        String hint = "Das korrekte Passwort lautet " + correctPW;
         if (username == null || username.isEmpty()) {
             return "/login";
-        } else if (username.equals(AUTHORIZED_USER) && password.equals(PW)) {
-            return "redirect:/angebot";    
+        } else if (password.equals(correctPW)){
+            return "redirect:/angebot"; 
         } else {
             logger.warn("Login failed for user " + username);
-            m.addAttribute("hint", HINT);
+            m.addAttribute("hint", hint);
             return "/login";
         }
+    
     }
 }

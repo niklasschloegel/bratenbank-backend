@@ -3,6 +3,7 @@ package de.hsrm.mi.web.bratenbank.bratboerse;
 import java.time.LocalDate;
 
 import javax.validation.constraints.Future;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,7 +21,7 @@ public class BratenDaten {
     private String abholort;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Future
+    @FutureOrPresent
     @NotNull
     private LocalDate haltbarbis;
     
@@ -33,6 +34,9 @@ public class BratenDaten {
     
     @Override
     public String toString(){
+        if (name == null || abholort == null || haltbarbis == null || beschreibung == null) {
+            return "BratenDaten";
+        }
         return String.format("Braten von %s in %s (haltbar bis %s): %s", name, abholort, haltbarbis.toString(), beschreibung);
     }
 

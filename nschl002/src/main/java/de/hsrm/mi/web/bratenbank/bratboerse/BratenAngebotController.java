@@ -41,12 +41,12 @@ public class BratenAngebotController {
 
 
             logger.warn("Fehler beim editieren eines Bratens");
-            return "/angebote/bearbeiten";
+            return "angebote/bearbeiten";
         }
 
         bratenListe.add(bratenDaten);
         m.addAttribute("angebote", bratenListe);
-        return "/angebote/liste";
+        return "angebote/liste";
     }
 
     @GetMapping("/angebot/neu")
