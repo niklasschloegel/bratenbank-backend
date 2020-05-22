@@ -33,3 +33,5 @@ out/
 bin/
 /nschl002/bin
 *.class
+
+.DS_Store
