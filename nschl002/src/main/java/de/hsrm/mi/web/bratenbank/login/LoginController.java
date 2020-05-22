@@ -20,16 +20,18 @@ public class LoginController {
 
 
     @PostMapping("/login")
-    public String login(@RequestParam String username, @RequestParam String password, Model m){
+    public String login(@RequestParam String username, @RequestParam String password,
+                        @RequestParam String sprache, Model m){
         String correctPW = username+username.length();
-        String hint = "Das korrekte Passwort lautet " + correctPW;
         if (username == null || username.isEmpty()) {
             return "/login";
         } else if (password.equals(correctPW)){
             return "redirect:/angebot"; 
         } else {
             logger.warn("Login failed for user " + username);
-            m.addAttribute("hint", hint);
+            m.addAttribute("username", username);
+            m.addAttribute("correct_password", correctPW);
+            m.addAttribute("sprache", sprache);
             return "/login";
         }
     

@@ -8,16 +8,27 @@ xmlns:th="http://www.thymeleaf.org" lang="de">
 <body>
 
     <h1 th:text="#{login.title}">Login</h1>
-    <span th:text="${hint}"></span>
+
+    <span th:if="${correct_password != null}" th:text="#{login.hint(${correct_password})}"> <br></span>
     <br>
     
     <form th:method="POST" th:action="@{/login}">
         <label for="username" th:text="#{login.username}">Username</label><br>
-        <input type="text" name="username" id="username">    
+        <input th:if="${username != null}" th:value="${username}" type="text" name="username" id="username">
+        <input th:unless="${username != null}" type="text" name="username" id="username">
         <br><br>
         <label for="password" th:text="#{login.password}">Password</label><br>
         <input type="password" name="password" id="password">
-        <br>
+        <br><br>
+        <label for="langswitch" th:text="#{login.language}">Choose language</label><br>
+        <select name="sprache" id="langswitch">
+            <option th:if="${sprache} == 'de'" selected value="de" th:text="#{login.german}"/>
+            <option th:if="${sprache} != 'de'" value="de" th:text="#{login.german}"/>
+            <option th:if="${sprache} == 'en'" selected value="en" th:text="#{login.english}"/>
+            <option th:if="${sprache} != 'en'" value="en" th:text="#{login.english}"/>
+            <option th:if="${sprache} == 'nl'" selected value="nl" th:text="#{login.dutch}"/>
+            <option th:if="${sprache} != 'nl'" value="nl" th:text="#{login.dutch}"/>
+        </select><br><br>
         <button type="submit" th:text="#{login.login}">Login</button>
     </form>
     

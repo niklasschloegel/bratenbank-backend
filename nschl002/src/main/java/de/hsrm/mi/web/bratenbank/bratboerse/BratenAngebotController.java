@@ -38,8 +38,6 @@ public class BratenAngebotController {
                                 BindingResult result) {
 
         if (result.hasErrors()) {
-
-
             logger.warn("Fehler beim editieren eines Bratens");
             return "angebote/bearbeiten";
         }

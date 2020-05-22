@@ -2,7 +2,6 @@ package de.hsrm.mi.web.bratenbank.bratboerse;
 
 import java.time.LocalDate;
 
-import javax.validation.constraints.Future;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
