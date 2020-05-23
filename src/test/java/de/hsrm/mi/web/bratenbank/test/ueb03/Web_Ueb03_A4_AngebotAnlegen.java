@@ -1,4 +1,4 @@
-package de.hsrm.mi.web.bratenbank.ueb03;
+package de.hsrm.mi.web.bratenbank.test.ueb03;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
