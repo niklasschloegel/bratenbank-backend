@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="de">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+
+<title th:text="#{signup.title}">Sign up</title>
+</head>
+
+<body>
+
+    <h1 th:text="#{signup.title}">Sign up</h1>
+
+    <form th:method="POST" th:object="${benutzer}" th:action="@{/benutzer}">
+        <label for="loginname" th:text="#{signup.username}">Username</label><br>
+        <input type="text" name="loginname" id="loginname" th:field="*{loginname}" th:errorclass="error">
+        <span th:if="${#fields.hasErrors('loginname')}" th:errors="*{loginname}"></span><br>
+        <br>
+        <label for="passwort" th:text="#{signup.password}">Password</label><br>
+        <input type="password" name="passwort" id="passwort" th:field="*{passwort}" th:errorclass="error">
+        <span th:if="${#fields.hasErrors('passwort')}" th:errors="*{passwort}"></span><br>
+        <br>
+        <label for="vollname" th:text="#{signup.name}">Full name</label><br>
+        <input type="text" name="vollname" id="vollname" th:field="*{vollname}" th:errorclass="error">
+        <span th:if="${#fields.hasErrors('vollname')}" th:errors="*{vollname}"></span><br>
+        <br>
+        <input type="checkbox" name="nutzungsbedingungenok" id="nutzungsbedingungenok" th:field="*{nutzungsbedingungenok}">
+        <label for="nutzungsbedingungenok" th:text="#{signup.toc}">I have read the terms of conditions.</label>
+        <br>
+        <button type="submit" th:text="#{signup.title}">Sign up</button>
+    </form>
+    
+</body>
+</html>
