@@ -10,9 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import de.hsrm.mi.web.bratenbank.benutzer.BenutzerService;
 
 @Controller
+@SessionAttributes("loggedinusername")
 public class LoginController {
 
     @Autowired BenutzerService benutzerService;
@@ -34,6 +37,7 @@ public class LoginController {
         if (username == null || username.isEmpty()) {
             return "/login";
         } else if (benutzerService.pruefeLogin(username, password)){
+            m.addAttribute("loggedinusername", username);
             return "redirect:/angebot"; 
         } else {
             logger.warn("Login failed for user " + username);
