@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org" lang="de">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{list.title}">Offers list</title>
+</head>
+<body>
+
+    <h1 th:text="#{list.offers}">Current offers</h1>
+
+    <div th:if="${#lists.size(angebote)} > 0">
+        <table>
+            <tr>
+                <th th:text="#{list.durability}">Best before</th>
+                <th th:text="#{list.provider}">Provider</th>
+                <th th:text="#{list.location}">Location</th>
+                <th th:text="#{list.description}">Description</th>
+                <th th:text="#{list.vegetarian}">Vegetarian scale</th>
+                <th th:text="#{list.delete}">delete</th>
+                <th th:text="#{list.edit}">edit</th>
+            </tr>
+            <tr th:each="a, status: ${angebote}">
+                <td th:text="${a.haltbarbis}">Best before</td>
+                <td th:text="${a.anbieter.vollname}">Provider</td>
+                <td th:text="${a.abholort}">Location</td>
+                <td th:text="${a.beschreibung}">Description</td>
+                <td th:text="${a.vgrad} + '%'">Vegetarian scale</td>
+                <td><a th:href="@{'/braten/angebot/'+ ${a.id}+'/del'}">[del]</a></td>
+                <td><a th:href="@{'/braten/angebot/'+ ${a.id}}">[edit]</a></td>
+            </tr>
+        </table>
+    </div>
+    <div th:if="${#lists.size(angebote)} <= 0" th:text="#{list.empty}">
+        No current offers!
+    </div>
+    <div>
+        <a th:href="@{/braten/angebot/neu}" th:text="#{list.new}">Add new roast</a>
+    </div>
+    
+    
+</body>
+</html>

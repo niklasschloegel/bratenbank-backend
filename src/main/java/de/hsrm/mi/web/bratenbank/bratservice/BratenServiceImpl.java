@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ import de.hsrm.mi.web.bratenbank.bratrepo.BratenRepository;
 
 @Service
 public class BratenServiceImpl implements BratenService {
+
+    private Logger logger = LoggerFactory.getLogger(BratenServiceImpl.class);
 
     @Autowired
     private BratenRepository bratenRepo;
@@ -40,21 +44,26 @@ public class BratenServiceImpl implements BratenService {
     @Transactional
     @Override
     public Braten editBraten(String loginname, Braten braten) throws BratenServiceException{
-        Benutzer ben = benutzerRepo.findByLoginname(loginname);
-        
-        braten.setAnbieter(ben);
-        
-        List<Braten> angebote = ben.getAngebote();
-        angebote.remove(braten);
-        angebote.add(braten);
+       
         try {
-            bratenRepo.save(braten);
-            benutzerRepo.save(ben);
+            
+            Benutzer ben = benutzerRepo.findByLoginname(loginname);
+            if (ben == null) {
+                logger.error("Benutzer null");
+                throw new BratenServiceException("Benutzer null");
+            }
+
+
+            braten.setAnbieter(ben);
+            
+            Braten bratenManaged = bratenRepo.save(braten);
+            List<Braten> angebote = ben.getAngebote();
+            angebote.add(bratenManaged);
+            return bratenManaged;
         } catch (OptimisticLockException ole) {
             throw new BratenServiceException(ole);
         }
         
-        return braten;
     }
 
     @Override

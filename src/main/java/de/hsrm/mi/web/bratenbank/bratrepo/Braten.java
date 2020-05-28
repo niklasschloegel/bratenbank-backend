@@ -52,7 +52,7 @@ public class Braten {
     
     @Override
     public String toString(){
-        if (abholort == null || haltbarbis == null || beschreibung == null) {
+        if (anbieter == null || abholort == null || haltbarbis == null || beschreibung == null) {
             return "BratenDaten";
         }
         return String.format("Braten von %s in %s (haltbar bis %s): %s",  anbieter.toString(), abholort, haltbarbis.toString(), beschreibung);
