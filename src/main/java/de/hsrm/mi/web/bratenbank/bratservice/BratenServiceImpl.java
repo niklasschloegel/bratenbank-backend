@@ -61,6 +61,7 @@ public class BratenServiceImpl implements BratenService {
             angebote.add(bratenManaged);
             return bratenManaged;
         } catch (OptimisticLockException ole) {
+            logger.warn("Transaktionsfehler");
             throw new BratenServiceException(ole);
         }
         

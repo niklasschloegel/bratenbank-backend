@@ -33,8 +33,8 @@ public class LoginController {
     public String login(@RequestParam String username, @RequestParam String password,
                         Locale locale, Model m){
         m.addAttribute("sprache", locale.getLanguage());
-        logger.info(locale.getCountry());
         if (username == null || username.isEmpty()) {
+            logger.info("Es wurde kein Benutzername angegeben.");
             return "/login";
         } else if (benutzerService.pruefeLogin(username, password)){
             m.addAttribute("loggedinusername", username);
