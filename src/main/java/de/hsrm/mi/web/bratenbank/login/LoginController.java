@@ -38,7 +38,7 @@ public class LoginController {
             return "/login";
         } else if (benutzerService.pruefeLogin(username, password)){
             m.addAttribute("loggedinusername", username);
-            return "redirect:/angebot"; 
+            return username.toLowerCase().contains("alt") ? "redirect:/angebot" : "redirect:/braten/angebot"; 
         } else {
             logger.warn("Login failed for user " + username);
             m.addAttribute("username", username);

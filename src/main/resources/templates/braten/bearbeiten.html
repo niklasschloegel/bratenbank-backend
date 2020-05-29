@@ -11,7 +11,7 @@
 
     <h1 th:text="#{edit.title}">Edit roast</h1>
 
-    <form th:method="POST" th:object="${angebotform}" th:action="@{/braten/angebot}">
+    <form th:method="POST" th:object="${angebotform}" th:action="@{/braten/angebot/neu}">
         <input type="hidden" th:field="*{id}">
         <input type="hidden" th:field="*{version}">
 
