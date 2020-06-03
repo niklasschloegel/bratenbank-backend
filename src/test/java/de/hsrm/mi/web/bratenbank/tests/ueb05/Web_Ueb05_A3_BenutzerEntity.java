@@ -1,4 +1,4 @@
-package de.hsrm.mi.web.bratenbank.test.ueb05;
+package de.hsrm.mi.web.bratenbank.tests.ueb05;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

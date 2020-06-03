@@ -1,4 +1,4 @@
-package de.hsrm.mi.web.bratenbank.test.ueb06;
+package de.hsrm.mi.web.bratenbank.tests.ueb06;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import java.time.LocalDate;

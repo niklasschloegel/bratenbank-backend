@@ -8,7 +8,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import de.hsrm.mi.web.bratenbank.bratboerse.validator.GuteAdresse;
+import de.hsrm.mi.web.bratenbank.validation.GuteAdresse;
 
 public class BratenDaten {
     
