@@ -14,6 +14,10 @@ import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import de.hsrm.mi.web.bratenbank.bratrepo.Braten;
 
 @Entity
@@ -22,10 +26,12 @@ public class Benutzer implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     @Id
     @GeneratedValue
     private long id;
 
+    @JsonIgnore
     @Version
     private long version;
 
@@ -34,7 +40,7 @@ public class Benutzer implements Serializable {
     @Size(min = 2)
     private String loginname;
 
-    @Column(name = "PASSWORT")
+    @JsonProperty(access=Access.WRITE_ONLY)
     @NotNull
     @Size(min = 3)
     private String passwort;
@@ -47,6 +53,7 @@ public class Benutzer implements Serializable {
     @Column(name = "NUTZUNGSBEDINGUNGENOK")
     private boolean nutzungsbedingungenok;
 
+    @JsonIgnore
     @OneToMany
     private List<Braten> angebote = new ArrayList<>();
 
