@@ -17,9 +17,9 @@ Sobald das Repository geklont wurde, kann in dem entsprechenden Ordner mit<br>
 `./gradlew bootRun`<br>
 die Anwendung gestartet werden und ist dann unter [Localhost](http://localhost:8080/) für erste Tetstzwecke erreichbar.<br>
 An den (lokalen) Server können dann REST-Anfragen gesendet werden, und unter folgenden Pfaden die Funktionalität getestet werden:
-* [Registrierung](http://localhost:8080/benutzer)<br>
-    * Beinhaltet der Loginname 'alt' werden keine Daten in Datenbanken gespeichert, lediglich in Session-Attributen<br>
-* [Login](http://localhost:8080/login) – Bei erfolgreichem einloggen werden Sie auf die Übersichtsseite aktuell angebotener Braten weitergeleitet ([Angebote](http://localhost:8080/angebote)). Dort können Sie:<br>
+- [Registrierung](http://localhost:8080/benutzer)
+    * Beinhaltet der Loginname 'alt' werden keine Daten in Datenbanken gespeichert, lediglich in Session-Attributen
+- [Login](http://localhost:8080/login) – Bei erfolgreichem einloggen werden Sie auf die Übersichtsseite aktuell angebotener Braten weitergeleitet ([Angebote](http://localhost:8080/angebote)). Dort können Sie:
     * Braten editieren
     * Braten löschen
     * einen neuen Braten anlegen
