@@ -22,4 +22,4 @@ An den (lokalen) Server können dann REST-Anfragen gesendet werden, und unter fo
 * [Login](http://localhost:8080/login) – Bei erfolgreichem einloggen werden Sie auf die Übersichtsseite aktuell angebotener Braten weitergeleitet ([Angebote](http://localhost:8080/angebote)). Dort können Sie:
     * Braten editieren
     * Braten löschen
-    * einen neuen Braten anlegen
+    * einen neuen Braten anlegen.
