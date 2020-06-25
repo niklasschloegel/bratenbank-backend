@@ -30,10 +30,7 @@ public class BratenServiceImpl implements BratenService {
 
     @Override
     public List<Braten> alleBraten() {
-        return benutzerRepo.findAll().stream()
-            .map(Benutzer::getAngebote)
-            .flatMap(List::stream)
-            .collect(Collectors.toList());
+        return bratenRepo.findAll();
     }
 
     @Override
