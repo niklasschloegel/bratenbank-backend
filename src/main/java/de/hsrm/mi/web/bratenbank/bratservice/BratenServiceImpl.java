@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import de.hsrm.mi.web.bratenbank.benutzer.Benutzer;
@@ -20,12 +21,16 @@ import de.hsrm.mi.web.bratenbank.bratrepo.BratenRepository;
 @Service
 public class BratenServiceImpl implements BratenService {
 
+    private static final String DESTINATION = "/topic/braten";
     private Logger logger = LoggerFactory.getLogger(BratenServiceImpl.class);
+
+    @Autowired
+    private SimpMessagingTemplate broker;
 
     @Autowired
     private BratenRepository bratenRepo;
 
-    @Autowired 
+    @Autowired
     private BenutzerRepository benutzerRepo;
 
     @Override
@@ -54,6 +59,7 @@ public class BratenServiceImpl implements BratenService {
             braten.setAnbieter(ben);
             
             Braten bratenManaged = bratenRepo.save(braten);
+            broker.convertAndSend(DESTINATION, new BratenMessage("change", bratenManaged));
             List<Braten> angebote = ben.getAngebote();
             angebote.add(bratenManaged);
             return bratenManaged;
@@ -72,6 +78,7 @@ public class BratenServiceImpl implements BratenService {
             Braten braten = b.get();
             Benutzer benutzer = braten.getAnbieter();
             if (benutzer != null) benutzer.getAngebote().remove(braten);
+            broker.convertAndSend(DESTINATION, new BratenMessage("delete", braten));
         }
         bratenRepo.deleteById(bratendatenid);
     }
