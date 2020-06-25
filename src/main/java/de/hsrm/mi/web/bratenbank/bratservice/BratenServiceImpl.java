@@ -67,8 +67,15 @@ public class BratenServiceImpl implements BratenService {
         
     }
 
+    @Transactional
     @Override
     public void loescheBraten(int bratendatenid) {
+        Optional<Braten> b = bratenRepo.findById(bratendatenid);
+        if (b.isPresent()) {
+            Braten braten = b.get();
+            Benutzer benutzer = braten.getAnbieter();
+            benutzer.getAngebote().remove(braten);
+        }
         bratenRepo.deleteById(bratendatenid);
     }
     

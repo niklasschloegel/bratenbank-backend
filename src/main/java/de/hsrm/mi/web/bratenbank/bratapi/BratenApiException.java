@@ -22,6 +22,10 @@ public class BratenApiException extends RuntimeException {
         super(cause);
     }
 
+    public BratenApiException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
     
     
 }
