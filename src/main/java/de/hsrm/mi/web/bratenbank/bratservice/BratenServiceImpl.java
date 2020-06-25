@@ -74,7 +74,7 @@ public class BratenServiceImpl implements BratenService {
         if (b.isPresent()) {
             Braten braten = b.get();
             Benutzer benutzer = braten.getAnbieter();
-            benutzer.getAngebote().remove(braten);
+            if (benutzer != null) benutzer.getAngebote().remove(braten);
         }
         bratenRepo.deleteById(bratendatenid);
     }
