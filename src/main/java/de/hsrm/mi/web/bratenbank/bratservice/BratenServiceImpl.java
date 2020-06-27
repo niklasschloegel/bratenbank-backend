@@ -55,13 +55,13 @@ public class BratenServiceImpl implements BratenService {
                 throw new BratenServiceException("Benutzer null");
             }
 
-
+            loescheBraten(braten.getId());
             braten.setAnbieter(ben);
-            
+
             Braten bratenManaged = bratenRepo.save(braten);
-            broker.convertAndSend(DESTINATION, new BratenMessage("change", bratenManaged));
             List<Braten> angebote = ben.getAngebote();
             angebote.add(bratenManaged);
+            broker.convertAndSend(DESTINATION, new BratenMessage("change", bratenManaged));
             return bratenManaged;
         } catch (OptimisticLockException ole) {
             logger.warn("Transaktionsfehler");

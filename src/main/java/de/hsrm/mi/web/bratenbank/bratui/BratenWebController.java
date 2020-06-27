@@ -53,11 +53,6 @@ public class BratenWebController {
         }
 
         try {
-            Benutzer anbieter = benutzerService.findeBenutzer(loginname);
-            if (anbieter != null) {
-                logger.info("Anbieter wurde nicht gefunden. Er wurde nachträglich hinzugefügt.");
-                braten.setAnbieter(anbieter);
-            }
             bratenService.editBraten(loginname, braten);
         } catch (BratenServiceException bse) {
             logger.warn("Beim editieren des Bratens ist ein Fehler mit der Datenbank aufgetreten.");
