@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 xmlns:th="http://www.thymeleaf.org" lang="de">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="#{list.title}">Offers list</title>
@@ -36,6 +37,11 @@ xmlns:th="http://www.thymeleaf.org" lang="de">
     </div>
     <div>
         <a th:href="@{/braten/angebot/neu}" th:text="#{list.new}">Add new roast</a>
+    </div>
+    <div>
+        <form th:method="POST" th:action="@{/logout}">
+            <button type="submit">Logout</button>
+        </form>
     </div>
     
     

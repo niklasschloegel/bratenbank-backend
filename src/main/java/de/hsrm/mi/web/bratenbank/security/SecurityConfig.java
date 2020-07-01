@@ -24,9 +24,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("friedfert")
                 .password(pwenc.encode("dingdong"))
+                .roles("USER")
             .and()
                 .withUser("joghurta")
-                .password(pwenc.encode("geheim123"));
+                .password(pwenc.encode("geheim123"))
+                .roles("USER");
     }
 
     @Override
@@ -39,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().hasRole("ADMIN")
             .and()
                 .formLogin()
-                .loginPage("login")
+                .loginPage("/login")
                 .defaultSuccessUrl("/braten/angebot")
                 .permitAll()
             .and()
