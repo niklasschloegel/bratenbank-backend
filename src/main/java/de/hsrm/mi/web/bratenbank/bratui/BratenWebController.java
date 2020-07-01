@@ -1,5 +1,6 @@
 package de.hsrm.mi.web.bratenbank.bratui;
 
+import java.security.Principal;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -25,7 +26,6 @@ import de.hsrm.mi.web.bratenbank.bratservice.BratenServiceException;
 
 @Controller
 @RequestMapping("/braten")
-@SessionAttributes("loggedinusername")
 public class BratenWebController {
 
     private Logger logger = LoggerFactory.getLogger(BratenWebController.class);
@@ -43,7 +43,7 @@ public class BratenWebController {
     }
 
     @PostMapping("/angebot/neu")
-    public String getNewEntry(Model m, @ModelAttribute("loggedinusername") String loginname,
+    public String getNewEntry(Model m, Principal login,
                                 @Valid @ModelAttribute("angebotform") Braten braten,
                                 BindingResult result) {
 
@@ -53,7 +53,7 @@ public class BratenWebController {
         }
 
         try {
-            bratenService.editBraten(loginname, braten);
+            bratenService.editBraten(login.getName(), braten);
         } catch (BratenServiceException bse) {
             logger.warn("Beim editieren des Bratens ist ein Fehler mit der Datenbank aufgetreten.");
             return "braten/bearbeiten";
@@ -63,7 +63,7 @@ public class BratenWebController {
     }
 
     @GetMapping("/angebot/neu")
-    public String addNewEntry(Model m, @ModelAttribute("loggedinusername") String loginname) {
+    public String addNewEntry(Model m) {
         m.addAttribute("angebotform", new Braten());
         return "braten/bearbeiten";
     }

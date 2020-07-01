@@ -1,6 +1,7 @@
 package de.hsrm.mi.web.bratenbank.bratrepo;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,6 +46,7 @@ public class Braten {
     @Column(name = "BESCHREIBUNG")
     private String beschreibung;
 
+    @SuppressWarnings("JpaAttributeTypeInspection")
     private int[] vegWerte = {0, 25, 50, 75, 100};
     
     @Column(name = "VGRAD")
@@ -56,6 +58,19 @@ public class Braten {
             return "BratenDaten";
         }
         return String.format("Braten von %s in %s (haltbar bis %s): %s",  anbieter.toString(), abholort, haltbarbis.toString(), beschreibung);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Braten)) return false;
+        Braten braten = (Braten) o;
+        return id == braten.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     public Benutzer getAnbieter(){
@@ -95,9 +110,7 @@ public class Braten {
     }
 
     public void setVegWerte(int[] vegWerte) {
-        for (int i=0; i<this.vegWerte.length; i++){
-            this.vegWerte[i] = vegWerte[i];
-        }
+        System.arraycopy(vegWerte, 0, this.vegWerte, 0, this.vegWerte.length);
     }
 
     public int getVgrad(){

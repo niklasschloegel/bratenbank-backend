@@ -55,7 +55,7 @@ public class BratenServiceImpl implements BratenService {
                 throw new BratenServiceException("Benutzer null");
             }
 
-            loescheBraten(braten.getId());
+            if (bratenRepo.findByAnbieter(ben).contains(braten)) loescheBraten(braten.getId());
             braten.setAnbieter(ben);
 
             Braten bratenManaged = bratenRepo.save(braten);
