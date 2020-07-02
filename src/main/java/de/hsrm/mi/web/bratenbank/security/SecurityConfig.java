@@ -3,6 +3,7 @@ package de.hsrm.mi.web.bratenbank.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -50,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/benutzer/**").permitAll()
                 .antMatchers("/api/**").permitAll()
-                .antMatchers("/stompbroker**").permitAll()
+                .antMatchers("/stompbroker/**").permitAll()
                 .antMatchers("/braten/**").authenticated()
                 .anyRequest().hasRole("ADMIN")
             .and()
@@ -62,6 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login")
-                .permitAll();
+                .permitAll()
+            .and().csrf().disable();
     }
 }
